@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered' executeOnSourceChanges='false'>
+    <pages>
+        <page name='Introduction'/>
+        <page name='The Problem'/>
+        <page name='Swift 3 Solution'/>
+        <page name='Swift 4&apos;s Codable'/>
+        <page name='Additional Properties'/>
+        <page name='Custom Keys'/>
+        <page name='Common JSON Structure'/>
+        <page name='UserDefaults'/>
+        <page name='Wrap-up &amp; Resources'/>
+    </pages>
+</playground>
