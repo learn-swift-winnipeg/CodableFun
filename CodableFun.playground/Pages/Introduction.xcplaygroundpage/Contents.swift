@@ -1,7 +1,7 @@
 /*:
- # Swift 4's Codable Protocol
+ # Swift 4's Codable
  
- A simple, easy, powerful, built-in way to convert our Swift data types to and from external representations such as JSON and property lists.
+ A simple, easy, powerful, built-in way to convert our Swift data types to and from external representations such as JSON or Property Lists.
  
  - What's the problem we're trying to solve?
  - How could we solve this problem previously?

@@ -1,18 +1,16 @@
 /*:
  # Additional Properties
  
- Let's repeat the previous exercise but with a more complicated type:
+ Let's repeat the previous exercise but with a more complicated type.
  */
 import Foundation
 
 // Define information type conforming to `Codable`.
 struct Todo: Codable {
-    
-    // Standard Library types
     let title: String
     let dueDate: Date
     
-    // Custom type conforming to Codable. Experiment with remove Codable conformance here.
+    // Custom type also conforming to `Codable`.
     enum Priority: String, Codable {
         case low, medium, high
     }

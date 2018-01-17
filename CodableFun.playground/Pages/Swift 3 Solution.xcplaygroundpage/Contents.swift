@@ -17,12 +17,12 @@ let todo = Todo(
     title: "Find an easier way to encode/decode data"
 )
 
-// Create a dictionary representation of type `[String: Any]`.
+// JSONSerialization needs a `[String: Any]` representation of our instance because it doesn't know anything about our `Todo` type or the JSON keys required by the server. We need to do this manually.
 let todoAsDictionary: [String: Any] = [
     "title": todo.title
 ]
 
-// Encode as JSON data.
+// Encode dictionary as JSON data.
 let encodedJSONData = try! JSONSerialization.data(
     withJSONObject: todoAsDictionary,
     options: []
@@ -36,7 +36,7 @@ String(data: encodedJSONData, encoding: .utf8)
  Next we'll decode the raw JSON data back into and instance our Swift `Todo` type.
  */
 
-// Decode raw JSON data back into Foundation object of the expected type, in this case `[String: Any]`. We need to know the JSON structure ahead of time in order to cast properly.
+// Decode raw JSON data back into Foundation object of the expected type, in this case `[String: Any]`.
 guard let decodedDictionary = try! JSONSerialization.jsonObject(
     with: encodedJSONData,
     options: []) as? [String: Any]
@@ -44,10 +44,11 @@ else {
     fatalError("Failed to decode raw JSON data back into [String: Any]")
 }
 
-// Make sure you can access each value as the corresponding type. This gets seriously tedious in real life because types usually have more than one property.
+// Make sure we can access a value of the appropriate type for each `Todo` property.
 guard let title = decodedDictionary["title"] as? String else {
     fatalError("Failed to access String for key 'title' in decodedDictionary")
 }
+// This gets seriously tedious in real life because types usually have more than one property.
 
 // Create instance from decoded dictionary values.
 let decodedTodo = Todo(

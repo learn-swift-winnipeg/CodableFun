@@ -9,15 +9,10 @@ import Foundation
 
 // Define information type conforming to `Codable`.
 struct Todo: Codable {
-    
-    // Standard Library types
     let title: String
     let dueDate: Date
     
-    // Custom type conforming to Codable. Experiment with remove Codable conformance here.
-    enum Priority: String, Codable {
-        case low, medium, high
-    }
+    enum Priority: String, Codable { case low, medium, high }
     let priority: Priority
     
     // Define custom key names by declaring a special nested enum called `CodingKeys` with a case matching each property name and a raw value of the custom key.

@@ -72,10 +72,15 @@ let rootLevelArrayOfWrapperObjectsJSONData = """
     ]
 """.data(using: .utf8)!
 
-// Decode raw JSON data into Array<[String: Todo]]> instance. This is possible because Dictionary<K, T> is already `Codable` provided `K` and `T` are `Codable`. Having said that I think we'd be better off here to use the wrapping technique outlined above.
-let decodedRootLevelArrayOfWrapperObjects = try! JSONDecoder().decode(Array<[String: Todo]>.self, from: rootLevelArrayOfWrapperObjectsJSONData)
+// Define new Codable type to model the wrapper objects.
+struct WrappedTodo: Codable {
+    let todo: Todo
+}
 
-let unwrappedTodos = decodedRootLevelArrayOfWrapperObjects.map({ $0["todo"] })
+// Decode raw JSON data into Array<WrappedTodo> instance.
+let decodedRootLevelArrayOfWrapperObjects = try! JSONDecoder().decode(Array<WrappedTodo>.self, from: rootLevelArrayOfWrapperObjectsJSONData)
+
+let unwrappedTodos = decodedRootLevelArrayOfWrapperObjects.flatMap({ $0.todo })
 
 unwrappedTodos
 /*:

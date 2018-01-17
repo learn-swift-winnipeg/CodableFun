@@ -40,7 +40,7 @@ decodedTodo
 /*:
  All the `String` keys, casting, conditional binding, is replaced by a single line of type safe code.
  
- When a type is defined as conforming to `Codable` the compiler will synthesize code needed to convert between the type and external representations such as JSON and property list, provided all property types also conform to `Codable`. This works for `title` in the example above because `String` already conforms to `Codable`.
+ When a type is defined as conforming to `Codable` the compiler will synthesize code needed to convert between the type and external representations such as JSON or Property List. The only requirement being all property types must also conform to `Codable`. This works for our `Todo` type because it's only property `title` is of type `String` and `String` already conforms to `Codable`.
  
  Ok great, but this is too easy. Let's look at a more complicated example.
  */

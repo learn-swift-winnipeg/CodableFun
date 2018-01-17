@@ -1,7 +1,7 @@
 /*:
  # UserDefaults
  
- We can also persist our Codable types to UserDefaults using the new `PropertyListEncoder` type. We still have to convert to/from raw data but that can be simplified by extending UserDefaults with two generic functions.
+ We can also persist our Codable types to UserDefaults. We still have to convert to/from raw data but that can be simplified by extending UserDefaults with two generic functions.
  
  Let's look at some examples:
  */
@@ -27,10 +27,8 @@ let todo = Todo(
 let userDefaults = UserDefaults(suiteName: UUID().uuidString)!
 let todoKey = "todoKey"
 
-// Encode as PropertyList data.
-let encodedPropertyListData = try! PropertyListEncoder().encode(todo)
-
 // Store in UserDefaults.
+let encodedPropertyListData = try! PropertyListEncoder().encode(todo)
 userDefaults.set(encodedPropertyListData, forKey: todoKey)
 
 // Retrieve from UserDefaults.
